@@ -5,8 +5,9 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
 
-from keras.applications.mobilenetv2 import MobileNetV2
-from keras.applications.inception_v3 import InceptionV3
+#from keras.applications.mobilenetv2 import MobileNetV2
+#from keras.applications.inception_v3 import InceptionV3
+from keras import applications
 
 import numpy as np
 
@@ -147,13 +148,13 @@ class ChildCNN:
     def build_prepared_model(self):
 
         if self.config["model"].lower()=="mobilenetv2":
-            base_model = MobileNetV2(
+            base_model = applications.MobileNetV2(
                 input_shape=self.input_shape,
                 weights=self.config['weights'],
                 include_top=False
             )
         elif self.config["model"].lower()=="inceptionv3":
-            base_model = InceptionV3(
+            base_model = applications.InceptionV3(
                 input_shape=self.input_shape,
                 weights=self.config['weights'],
                 include_top=False
