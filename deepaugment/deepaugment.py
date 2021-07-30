@@ -3,7 +3,10 @@
 import tensorflow as tf
 import keras
 
-config = tf.compat.v1.ConfigProto()
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
+config = tf.ConfigProto()
 config.gpu_options.allow_growth = True  # tell tensorflow not to use all resources
 session = tf.Session(config=config)
 keras.backend.set_session(session)
